@@ -1,3 +1,4 @@
+
 %% Script to generate '.mat' file storing FTLE Field values at 101 timeshots from 0 to 10 seconds at 0.1s intervals 
 end_time = 10;
 time_shot_interval = 0.1;
@@ -18,8 +19,8 @@ incompressible = true;
 % Cauchy-Green strain
 cgStrainOdeSolverOptions = odeset('relTol',1e-5);
 
-ftleValuesf=zeros(end_time/time_shot_interval+1,resolutionX*resolutionY);
-ftleValuesb=zeros(end_time/time_shot_interval+1,resolutionX*resolutionY);
+ftleValuesf = zeros(end_time/time_shot_interval+1,resolutionX*resolutionY);
+ftleValuesb = zeros(end_time/time_shot_interval+1,resolutionX*resolutionY);
 ft = zeros(1,resolutionX*resolutionY);
 
 for j=0:end_time/time_shot_interval
