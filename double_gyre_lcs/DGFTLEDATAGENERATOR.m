@@ -1,6 +1,8 @@
- 
+%% Script to generate '.mat' file storing FTLE Field values at 100 timeshots from 0 to 10 seconds at 0.1s intervals 
+end_time = 10
+time_shot_interval = 0.1
 
-%% Input parameters
+% Double gyre parameters
 epsilon = 0.25;
 amplitude = .1;
 omega = pi/5;
@@ -9,32 +11,34 @@ resolutionX = 512; %set smaller value if smaller '.mat' file is required
 [resolutionY,deltaX] = equal_resolution(domain,resolutionX);
 resolution = [resolutionX,resolutionY];
 
-%% Velocity definition
+% Velocity definition
 lDerivative = @(t,x,~)derivative(t,x,false,epsilon,amplitude,omega);
 incompressible = true;
 
-%% LCS parameters
 % Cauchy-Green strain
 cgStrainOdeSolverOptions = odeset('relTol',1e-5);
 
-
-%% Cauchy-Green strain eigenvalues and eigenvectors
-
 ftleValuesf=double.empty;
 ftleValuesb=double.empty;
-
-for j=0:100
+for j=0:endtime*time_shot_interval
     
-    timespan = [j*0.1,10+j*0.1];
+    % Cauchy-Green strain eigenvalues for forward time FTLE field
+    timespan = [j*time_shot_interval,end_time+j*time_shot_interval];
     [~,cgEigenvalue] = eig_cgStrain(lDerivative,domain,resolution,timespan,'incompressible',incompressible,'odeSolverOptions',cgStrainOdeSolverOptions);
+    
+    % Generate forward time FTLE field values at specified initial time
     maxeg = max(cgEigenvalue');
     for i=1:resolutionX*resolutionY
         temp = maxeg(i);
         ft(i) = ftle(temp,abs(abs(timespan(2)-timespan(1))));
     end
     ftleValuesf = [ftleValuesf;ft];
-    timespan = [j*0.1,-10+j*0.1];
+    
+    % Cauchy-Green strain eigenvalues for backward time FTLE field
+    timespan = [j*time_shot_interval,-end_time+j*time_shot_interval];
     [~,cgEigenvalue] = eig_cgStrain(lDerivative,domain,resolution,timespan,'incompressible',incompressible,'odeSolverOptions',cgStrainOdeSolverOptions);
+    
+    % Generate backward time FTLE field values at specified initial time
     maxeg = max(cgEigenvalue');
     for i=1:resolutionX*resolutionY
         temp = maxeg(i);
