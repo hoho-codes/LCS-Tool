@@ -36,7 +36,7 @@ for i=1:resolutionX*resolutionY
 end
 plot_ftle(hAxes,domain,resolution,ftf);
 
-%    % Uncomment the following section and comment out the correspnding previous section (lines 23-33) if backward time FTLE field is required
+%    % Uncomment the following section and comment out the correspnding previous section (lines 25-37) if backward time FTLE field is required
 
 %    % Cauchy-Green strain eigenvalues for backward time FTLE Field
 %    integration_time = -integration_time;
