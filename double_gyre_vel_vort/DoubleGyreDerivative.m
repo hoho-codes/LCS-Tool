@@ -1,6 +1,5 @@
 function dxdt = DoubleGyreDerivative(t,x,eps,w,A)
   
-%   eps = 0.25; w = pi/5; A = 0.1;
   f = @(t,z) (eps*sin(w*t)*z*z+(1-2*eps*sin(w*t))*z);
   dfdx = @(t,a) (2*eps*a*sin(w*t)+(1-2*eps*sin(w*t)));
 
