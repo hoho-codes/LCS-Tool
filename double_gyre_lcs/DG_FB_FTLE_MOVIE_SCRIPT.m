@@ -1,4 +1,6 @@
-%% Script to plot how the FTLE Fields change over time. To generate a movie comment out lines 10,11,28,29,30,33.
+
+%% Script to plot how the FTLE Fields change over time.
+%% To generate a movie file comment out lines 12,13,30,31,32,35.
 
 % the '.mat' file has to be generated before running the script. Use
 % DG_FB_FTLE_DATA_GENERATOR.m to generate it.
