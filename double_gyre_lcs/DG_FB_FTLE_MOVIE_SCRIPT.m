@@ -6,7 +6,7 @@
 % DG_FB_FTLE_DATA_GENERATOR.m to generate it.
 load('double_gyre_ftle_values_0to10s.mat');
 
-%length of the movie in 0.1s. Default value set is 2 minutes.
+% Length of the movie in 0.1s. Default value set is 2 minutes.
 endtime = 1200;
 
 %mov = VideoWriter('DG_FB_FTLE.avi');
