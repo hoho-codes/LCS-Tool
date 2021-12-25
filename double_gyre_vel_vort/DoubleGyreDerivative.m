@@ -1,6 +1,6 @@
 
 %% Function that returns velocity values of the Double Gyre stream function taking
-%% the parameters eps,w,A as inputs
+%% the parameters eps,w,A as inputs along with the time 't' (scalar) and position 'x' (2D vector)
 
 function dxdt = DoubleGyreDerivative(t,x,eps,w,A)
 
