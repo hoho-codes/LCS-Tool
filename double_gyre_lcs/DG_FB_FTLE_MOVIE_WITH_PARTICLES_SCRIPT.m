@@ -22,7 +22,7 @@ load('double_gyre_ftle_values_0to10s.mat');
 %length of the movie in 0.1s. Default value set is 2 minutes.
 endtime = 1200;
 
-% mov = VideoWriter('Double Gyre FB FTLE with 8^2 particles.avi');
+% mov = VideoWriter('DG_FB_FTLE_8^2_PARTICLES.avi');
 % mov.FrameRate = 10;
 
 for i=1:endtime+1
