@@ -1,12 +1,21 @@
+%% Script to plot how the FTLE Fields change over time. To generate a movie comment out lines 10,11,28,29,30,33.
 
+% the '.mat' file has to be generated before running the script. Use
+% DG_FB_FTLE_DATA_GENERATOR.m to generate it.
 load('double_gyre_ftle_values_0to10s.mat');
+
+%length of the movie in 0.1s. Default value set is 2 minutes.
 endtime = 1200;
-%mov = VideoWriter('Double Gyre FB FTLE.avi');
+
+%mov = VideoWriter('DG_FB_FTLE.avi');
 %mov.FrameRate = 10;
 
 for i=1:endtime+1
     
+    % rem function used as data is available for 101 timeshots but FTLE
+    % Fields are periodic
     j=rem(i,101)+1;
+    
     sgtitle("Time = "+num2str(i*0.1-0.1))
     subplot(1,2,1)
     imagesc([0 2],[0 1],reshape(ftleValuesf(j,:),fliplr(resolution)));
