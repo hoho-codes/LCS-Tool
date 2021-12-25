@@ -10,7 +10,7 @@ epsilon = 0.25;
 amplitude = .1;
 omega = pi/5;
 domain = [0,2;0,1];
-resolutionX = 50;
+resolutionX = 512;
 [resolutionY,deltaX] = equal_resolution(domain,resolutionX);
 resolution = [resolutionX,resolutionY];
 
