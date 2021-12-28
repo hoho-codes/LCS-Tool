@@ -1,6 +1,6 @@
 
 %% Script to plot how the FTLE Fields change over time alongwith the evolution of some particles.
-%% To generate a movie file comment out lines 25,26,109,110,111,112,115
+%% To generate a movie file comment out lines 25,26,109,110,111,114
 
 % Location of Initial Points
 xi = 0.8;yi = 0;
@@ -106,7 +106,6 @@ for i=1:endtime+1
     drawnow;
     hold off;
 
-%     pause(1);
 %     F = getframe(gcf);
 %     open(mov);
 %     writeVideo(mov,F);
